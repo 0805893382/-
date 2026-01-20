@@ -1,10 +1,22 @@
-
 import { GoogleGenAI } from "@google/genai";
 
-// Initialize GoogleGenAI with process.env.API_KEY
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// process 객체가 존재하지 않는 브라우저 환경에서의 에러 방지
+const getApiKey = () => {
+  try {
+    return typeof process !== 'undefined' ? process.env.API_KEY : '';
+  } catch (e) {
+    return '';
+  }
+};
+
+const apiKey = getApiKey();
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const getLogisticsCounselor = async (question: string): Promise<string> => {
+  if (!ai) {
+    return "API 키 설정이 필요합니다. 고객센터(080-589-3382)로 문의주세요.";
+  }
+
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
