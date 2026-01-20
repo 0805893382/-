@@ -1,0 +1,7 @@
+{
+  "name": "유통퀵화물 - 스마트 물류 솔루션",
+  "description": "전국 화물 운송 및 도심 퀵서비스를 제공하는 스마트 물류 플랫폼입니다. AI 기반 요금 예측 및 실시간 배차 시스템을 지원합니다.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
