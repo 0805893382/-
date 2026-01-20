@@ -52,31 +52,18 @@
         .hero-gradient {
             background: linear-gradient(180deg, rgba(10, 17, 40, 0) 0%, rgba(10, 17, 40, 0.8) 100%);
         }
-        /* Kakao Floating Pulse Effect */
-        .kakao-pulse {
-            position: relative;
-        }
-        .kakao-pulse::before {
-            content: '';
-            position: absolute;
-            inset: -8px;
-            border-radius: 9999px;
-            background: #FEE500;
-            opacity: 0.3;
-            animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
     </style>
-    <!-- Kakao SDK -->
-    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.0/kakao.min.js" integrity="sha384-SCl8Lcst6STYp9v276U5mS2E2iO598J8CExL8jG3R5B6lXh1XvW8U" crossorigin="anonymous"></script>
 <script type="importmap">
 {
   "imports": {
+    "react": "https://esm.sh/react@19.2.3",
+    "react-dom": "https://esm.sh/react-dom@19.2.3",
+    "react-dom/client": "https://esm.sh/react-dom@19.2.3/client",
+    "@google/genai": "https://esm.sh/@google/genai@1.37.0",
+    "recharts": "https://esm.sh/recharts@3.6.0",
+    "lucide-react": "https://esm.sh/lucide-react@0.475.0",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "@google/genai": "https://esm.sh/@google/genai@^1.37.0",
-    "recharts": "https://esm.sh/recharts@^3.6.0",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+    "react/": "https://esm.sh/react@^19.2.3/"
   }
 }
 </script>

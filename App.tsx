@@ -10,7 +10,7 @@ import {
   Users2, CheckCircle, 
   PhoneCall, Headphones, HelpCircle,
   AlertCircle, Building2, Receipt, BarChart3, Briefcase,
-  MessageCircle, Info, ClipboardList, X
+  MessageCircle, Info, ClipboardList
 } from 'lucide-react';
 
 type View = 'home' | 'service' | 'estimate' | 'booking' | 'contract' | 'customer';
@@ -47,8 +47,6 @@ const App: React.FC = () => {
       <main className="transition-all duration-500">
         {renderContent()}
       </main>
-
-      <KakaoFloatingWidget />
 
       {/* Shared Footer */}
       <footer className="bg-navy text-white pt-32 pb-12 px-6">
@@ -90,7 +88,7 @@ const App: React.FC = () => {
             </div>
           </div>
           
-          <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">
+          <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between Bird items-center gap-6 text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">
             <p>© 2025 YUTONG QUICK CARGO. ALL RIGHTS RESERVED.</p>
             <div className="flex gap-8">
               <span>Privacy Policy</span>
@@ -100,41 +98,6 @@ const App: React.FC = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
-};
-
-// --- Kakao Floating Widget Component ---
-const KakaoFloatingWidget: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    // 페이지 로드 후 1.5초 뒤에 툴팁과 함께 서서히 나타남
-    const timer = setTimeout(() => setIsVisible(true), 1500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  return (
-    <div className={`fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[100] transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-      {/* Tooltip Message */}
-      <div className="absolute bottom-full right-0 mb-4 bg-white border border-border px-4 py-2 rounded-2xl shadow-xl whitespace-nowrap animate-bounce animate-duration-[3s]">
-        <p className="text-[11px] font-bold text-navy flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-blue"></span>
-          무엇을 도와드릴까요? <span className="text-blue">실시간 배차 중</span>
-        </p>
-        <div className="absolute -bottom-1 right-6 w-2 h-2 bg-white border-r border-b border-border rotate-45"></div>
-      </div>
-
-      {/* Main Floating Button */}
-      <a 
-        href="http://pf.kakao.com/_rgEaxj" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="kakao-pulse w-14 h-14 md:w-16 md:h-16 bg-[#FEE500] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 group"
-        aria-label="카카오톡 상담하기"
-      >
-        <MessageCircle size={32} fill="#191919" className="text-[#191919] group-hover:rotate-12 transition-transform" />
-      </a>
     </div>
   );
 };
