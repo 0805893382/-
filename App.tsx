@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import FareEstimator from './components/FareEstimator';
@@ -18,7 +17,6 @@ type View = 'home' | 'service' | 'estimate' | 'booking' | 'contract' | 'customer
 const App: React.FC = () => {
   const [view, setView] = useState<View>('home');
 
-  // 화면 전환 시 최상단으로 스크롤
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [view]);
@@ -48,7 +46,6 @@ const App: React.FC = () => {
         {renderContent()}
       </main>
 
-      {/* Shared Footer */}
       <footer className="bg-navy text-white pt-32 pb-12 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-16 mb-20">
@@ -88,7 +85,7 @@ const App: React.FC = () => {
             </div>
           </div>
           
-          <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between Bird items-center gap-6 text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">
+          <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">
             <p>© 2025 YUTONG QUICK CARGO. ALL RIGHTS RESERVED.</p>
             <div className="flex gap-8">
               <span>Privacy Policy</span>
@@ -102,7 +99,6 @@ const App: React.FC = () => {
   );
 };
 
-// --- Home View Component ---
 const HomeView: React.FC<{ setView: (v: View) => void }> = ({ setView }) => (
   <div className="animate-in fade-in duration-700">
     <section className="relative h-screen flex items-center justify-center overflow-hidden bg-navy">
@@ -173,7 +169,6 @@ const HomeView: React.FC<{ setView: (v: View) => void }> = ({ setView }) => (
   </div>
 );
 
-// --- Contract View Component ---
 const ContractView: React.FC = () => (
   <div className="pt-32 pb-32 animate-in fade-in duration-700">
     <div className="max-w-7xl mx-auto px-6">
@@ -290,7 +285,6 @@ const ContractView: React.FC = () => (
   </div>
 );
 
-// --- Service View Component ---
 const ServiceView: React.FC<{ setView: (v: View) => void }> = ({ setView }) => (
   <div className="pt-32 pb-20 px-6 animate-in slide-in-from-bottom-4 duration-500">
     <div className="max-w-7xl mx-auto">
@@ -305,7 +299,6 @@ const ServiceView: React.FC<{ setView: (v: View) => void }> = ({ setView }) => (
       </div>
 
       <div className="space-y-24">
-        {/* 1. 퀵서비스 */}
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1">
             <div className="w-16 h-16 bg-orange-500 rounded-3xl flex items-center justify-center text-white mb-8">
@@ -335,7 +328,6 @@ const ServiceView: React.FC<{ setView: (v: View) => void }> = ({ setView }) => (
           </div>
         </div>
 
-        {/* 2. 화물운송 */}
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="rounded-[2.5rem] overflow-hidden shadow-2xl h-[400px]">
             <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=1200" className="w-full h-full object-cover" alt="Cargo Service" />
@@ -366,7 +358,6 @@ const ServiceView: React.FC<{ setView: (v: View) => void }> = ({ setView }) => (
   </div>
 );
 
-// --- Estimate View Component ---
 const EstimateView: React.FC = () => (
   <div className="animate-in fade-in duration-500">
     <FareEstimator />
@@ -391,7 +382,6 @@ const EstimateView: React.FC = () => (
   </div>
 );
 
-// --- Booking View Component ---
 const BookingView: React.FC = () => (
   <div className="pt-32 animate-in fade-in duration-500">
     <div className="max-w-7xl mx-auto px-6">
@@ -421,7 +411,6 @@ const BookingView: React.FC = () => (
   </div>
 );
 
-// --- Customer View Component ---
 const CustomerView: React.FC = () => (
   <div className="pt-32 pb-32 animate-in fade-in duration-500 px-6">
     <div className="max-w-7xl mx-auto">
@@ -442,18 +431,9 @@ const CustomerView: React.FC = () => (
             {[
               { q: '요금은 어떻게 산정되나요?', a: '기본 거리 요금에 차량 톤수, 작업 강도(수작업 여부), 시간대 할증(야간/공휴일)을 종합하여 산정합니다.' },
               { q: '세금계산서 발행이 가능한가요?', a: '네, 법인/개인 사업자 등록증을 전달주시면 익일 내로 전자세금계산서를 신속하게 발행해 드립니다.' },
-              { 
-                q: '주문 취소 시 비용이 발생하나요?', 
-                a: '배차 접수가 시작되면 취소 시점에 따라 취소비가 발생합니다. 이 비용은 100% 기사님께 지급되므로 카드 결제나 현금영수증 처리가 불가능하며, 출발지 도착 이후나 예약건 당일 취소 시에는 운송료 환불이 불가합니다.' 
-              },
-              { 
-                q: '짐이 생각보다 많아 적재가 불가능하거나 초과되면 어떻게 되나요?', 
-                a: '주문한 차량의 적재 용량을 초과하거나 접수된 수량보다 물품이 많은 경우, 추가 비용이 발생하거나 배차가 취소될 수 있습니다. 이때 발생하는 취소 비용은 고객님 부담입니다.' 
-              },
-              { 
-                q: '결제 방식과 부가세는 어떻게 되나요?', 
-                a: '카드 결제 및 세금계산서 발행 시 안내드린 요금에 부가세가 별도로 발생합니다. 카드 결제 시에는 보안을 위해 주문 시 카드번호와 유효기간을 반드시 전달해 주셔야 합니다.' 
-              }
+              { q: '주문 취소 시 비용이 발생하나요?', a: '배차 접수가 시작되면 취소 시점에 따라 취소비가 발생합니다. 이 비용은 100% 기사님께 지급되므로 카드 결제나 현금영수증 처리가 불가능하며, 출발지 도착 이후나 예약건 당일 취소 시에는 운송료 환불이 불가합니다.' },
+              { q: '짐이 생각보다 많아 적재가 불가능하거나 초과되면 어떻게 되나요?', a: '주문한 차량의 적재 용량을 초과하거나 접수된 수량보다 물품이 많은 경우, 추가 비용이 발생하거나 배차가 취소될 수 있습니다. 이때 발생하는 취소 비용은 고객님 부담입니다.' },
+              { q: '결제 방식과 부가세는 어떻게 되나요?', a: '카드 결제 및 세금계산서 발행 시 안내드린 요금에 부가세가 별도로 발생합니다. 카드 결제 시에는 보안을 위해 주문 시 카드번호와 유효기간을 반드시 전달해 주셔야 합니다.' }
             ].map((faq, i) => (
               <details key={i} className="group border border-border rounded-2xl bg-white overflow-hidden">
                 <summary className="p-6 cursor-pointer flex justify-between items-center list-none">
